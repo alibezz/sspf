@@ -1,0 +1,20 @@
+<h1>Mudança de senha</h1>
+
+
+<%= error_messages_for :usuario %>
+
+<% form_for :usuario, @usuario do |f| %>
+
+  <table>
+  <tr><td><b> Senha atual: </b></td>
+  <td><%= password_field_tag :senha_antiga, nil, :size => 20 %></td></tr>
+
+  <tr><td><b><%= label :usuario, :senha, 'Nova senha: '%></b></td>
+  <td><%= f.password_field :senha, :size => 20 %> </td></tr>
+
+  <tr><td><b><%= label :usuario, :senha_confirmation, 'Repita a nova senha: '%></b></td>
+  <td><%= f.password_field :senha_confirmation, :size => 20 %></td></tr>
+  </table>
+
+  <%= submit_tag 'Alterar' %>
+<%end%>

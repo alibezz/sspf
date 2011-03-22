@@ -1,0 +1,19 @@
+<h2> Edição de Dados do Professor </h2>
+
+<%= error_messages_for :professor %>
+
+<% form_for :professor, @professor do |f| %>
+  <% [[:nome, 'Nome: '], [:email, 'Email: ']].each do |campo| %>
+    <%= label :professor, campo[0], campo[1] %>
+     <%= f.text_field campo[0] %> <br>
+  <% end %>
+  <br>
+  <b><%= label :professor, :topicos, "Tópicos de interesse: " %></b> <br>
+   <%= collection_select 'professor', 'topico_ids', @topicos, 'id', 'nome',{},{:multiple => true, :size => 5}%> <br><br>
+  <br>
+  <b> Disponível para avaliar: </b> <%= f.check_box :avaliador %> <br>
+  <b> Disponível para orientar: </b> <%= f.check_box :orientador %> <br>
+  <br>
+  <%= submit_tag 'Salvar' %> ou <%= link_to 'Cancelar', :action => 'index', :controller => 'professor' %>
+<% end %>
+

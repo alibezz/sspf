@@ -1,0 +1,17 @@
+<li> 
+<b>  Nome: </b>  <%= aluno_buscado.nome %> <br> 
+<b> Email: </b> <%= aluno_buscado.email %> <br>
+<% if aluno_buscado.projeto %>
+  <b> Projeto: </b>
+  <%= link_to aluno_buscado.projeto.titulo, :action => 'visualiza', :controller => 'projeto', :id => aluno_buscado.projeto.titulo %> (
+  <%= aluno_buscado.projeto.situacao %> ,
+  <%=aluno_buscado.projeto.semestre.nome %> )
+<%else%>
+  Projeto não registrado
+<%end%>
+
+ <%#= link_to 'Editar', :controller => 'projeto', :action => 'edita', :id => aluno_buscado.id %>
+ <%#= link_to 'Desabilitar', :action => :desabilita_aluno, :id => aluno_buscado.id %>
+<br> <br>
+
+</li> 

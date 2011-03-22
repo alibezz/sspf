@@ -1,0 +1,18 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+# one:
+#   column: value
+#
+# two:
+#   column: value
+t1:
+        id: 1
+        nome: Topico 1
+
+t2:
+        id: 2
+        nome: Topico 2
+
+t3:
+        id: 3
+        nome: Topico 3

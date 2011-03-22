@@ -1,0 +1,2 @@
+module SspfHelper
+end

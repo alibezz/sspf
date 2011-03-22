@@ -1,0 +1,46 @@
+h1,h2,h3
+{
+font-family: "lucida calligraphy", arial, 'sans serif'; 
+}
+
+h1,h3{
+color:#483d8b;
+text-align:center;
+}
+
+h3 a{
+text-decoration:none;
+}
+
+h3 a:hover{
+color:red;
+}
+
+h2 {
+color:#48ad8b;
+}
+
+p,table,li
+{
+font-family: "lucida calligraphy", arial, 'sans serif'; 
+margin-left: 10pt;
+
+}
+
+body
+{
+background-color:#fffaf0;
+}
+
+p,li,th,td
+{
+font-size: 100%;
+}
+
+table {
+border-style:hidden;
+}
+
+li {
+list-style: square;
+}

@@ -1,0 +1,9 @@
+<li> 
+<b>  Nome: </b>  <%= professor_buscado.nome %> <br> 
+<b>  Email: </b> <%= professor_buscado.email %> <br>
+<b>  Áreas de Interesse: </b> <br>
+<%= professor_buscado.topicos.map {|t| '- ' + t.nome + '<br>' } %> <br>
+
+ <br>
+
+</li> 

@@ -1,0 +1,4 @@
+<h2>Meus Dados</h2>
+Nome: <%= @professor.nome %><br>
+Email: <%= @professor.email %> <br>
+Topicos: <br><%= @professor.topicos.map {|t| ' - ' + t.nome + '<br>' } %><br>

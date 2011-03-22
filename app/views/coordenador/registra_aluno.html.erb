@@ -1,0 +1,26 @@
+<h2>Cadastro de Aluno</h2>
+
+<%= error_messages_for :aluno %>
+
+<% form_for :aluno, @aluno do |f| %>
+   <table>
+      <% [[:nome, 'Nome: '], [:email, 'Email: '],[:matricula, 'Numero de matrícula: ']].each do |campo| %>
+        <tr><td><b><%= label :aluno, campo[0], campo[1] %></b></td>
+	   <td><%= f.text_field campo[0] %> </td></tr>
+      <% end %>
+   </table>
+   <br>
+
+  <table>
+    <tr><td><b><%= label :aluno, :usuario, 'Usuário: '%></b></td>
+    <td><%= f.text_field :usuario, :size => 20%> </td></tr>
+
+    <tr><td><b><%= label :aluno, :senha, 'Senha: '%></b></td>
+    <td><%= f.password_field :senha, :size => 20 %> </td></tr>
+
+    <tr><td><b><%= label :aluno, :senha_confirmation, 'Repita a senha: '%></b></td>
+    <td><%= f.password_field :senha_confirmation, :size => 20 %> </td></tr>
+  </table>
+   <br>
+   <%= submit_tag 'Registrar' %> ou <%= link_to 'Cancelar', :action => :index, :controller => :professor %> 
+<% end %>

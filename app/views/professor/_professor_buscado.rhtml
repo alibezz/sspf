@@ -1,0 +1,9 @@
+<li> 
+<b>  Nome: </b>  <%= professor_buscado.nome %> <br> 
+<b> Email: </b> <%= professor_buscado.email %> <br>
+
+ <%= link_to 'Editar', :action => :edita_professor, :controller => 'professor', :id => professor_buscado.id %>
+ <%if professor_buscado.orientador or professor_buscado.avaliador %><%= link_to 'Desabilitar', :action => :desabilita_professor, :controller => 'coordenador', :id => professor_buscado.id %><% end %>
+<br> <br>
+
+</li> 

@@ -1,0 +1,17 @@
+<h2> Alunos Registrados</h2>
+
+<%= link_to 'Cadastrar Aluno', :action => 'registra_aluno' %>
+<br><br>
+
+<% form_tag(:action => :alunos) do %>
+  <%= label 'aluno', 'Nome: '%>
+  <%= text_field_tag(:nome) %>
+  <%= submit_tag("Buscar") %>
+<% end %>
+<%= link_to 'Mostra Todos', :action => :alunos %> <br>
+
+<ul>
+ <%= render :partial => 'aluno_buscado', :collection => @alunos %>
+</ul>
+
+

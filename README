@@ -1,0 +1,44 @@
+--- Instalação ---
+
+Na pasta 'tags/0.3' temos a terceira versão funcional do projeto. Como o banco de dados é local, é necessário o seguinte comando para inicializá-lo: 
+
+$ rake db:migrate
+
+Para acessar o sistema via browser, como o sistema ainda está em desenvolvimento, é preciso rodar um servidor rails local através do seguinte comando:
+
+$ ./script/server
+
+Os comandos anteriores possibilitam o acesso ao projeto através do endereço
+
+http://localhost:3000/
+
+Seguindo estes passos, é possível acessar uma página de setup do sistema, onde é necessário indicar quem é seu coordenador (administrador geral) e qual é o semestre corrente. Em seguida, este administrador, já logado, pode cadastrar professores, tópicos de interesse e alunos, dentre outras ações especificadas nos requisitos deste projeto. 
+
+Uma maneira mais objetiva de averiguar as funcionalidades do projeto é populá-lo previamente com alguns usuários, tópicos de interesse iniciais e um semestre corrente, sendo poupada a tarefa de inicializar todo o sistema. Há um script para isto, bastante simples, que é ativado com o comando 
+
+$ ./script/popula
+
+Ele deve ser rodado após as migrações do banco de dados local. Em seguida, e após rodar o /script/server, o sistema fica acessível no mesmo endereço indicado acima. Desta vez, no lugar de uma tela de setup, já aparecerá uma tela de login. Este script pode ser incrementado livremente. Neste momento, ele possui o usuário administrador debora, os usuários professores flach, fabiola, luciano e george, e os usuários alunos cason, aline, danton e moises. A senha de todos estes usuários é a mesma, 1234. Os tópicos de interesse são Engenharia de Software, Banco de Dados, Sistemas Operacionais e Sistemas Distribuídos. O semestre corrente é 2008.1. 
+
+
+A qualquer momento, se for de interesse, o banco de dados pode ser reinicializado com um
+
+$ rake db:reset
+
+
+--- Requisitos ---
+
+O sistema é implementado sobre Ruby+Rails e utiliza como banco de dados o sqlite3. 
+Assim, se faz necesária a instalação do rails 2.0, ruby 1.8, sqlite3 e libsqlite3-ruby.
+No sistema operacional Debian, os pacotes necessários podem ser instalados com:
+
+# aptitude install rails sqlite3 libsqlite3-ruby1.8
+
+Espera-se que os pacotes libsqlite3-0, rake, ruby1.8, ruby, rdoc sejam instalados automaticamente, visto serem dependências dos primeiros.
+
+--- O Sistema ---
+
+O sistema, como indicado acima, funciona mediante autenticação. Ele já está funcional para todos os seus stakeholders: visitantes, professores, alunos e coordenador.
+
+Com tais requisitos, os alunos podem registrar projetos, editá-los, visualizá-los, acompanhar sua banca avaliadora e nota. Os professores podem editar seus tópicos de interesse, seus dados pessoais, sua disponibilidade para avaliação e orientação, acompanhar as bancas de que fazem parte, avaliar projetos e orientá-los. Nesta versão, quando um projeto já foi completamente avaliado, seu orientador, ao consultá-lo em suas orientações, pode gerar sua folha de avaliação completa. O coordenador pode modificar os prazos de entrega dos projetos, gerenciar bancas e cadastrar professores e alunos. Como o coordenador também é um professor, ele pode realizar todas as ações que dizem respeito a estes últimos.
+

@@ -1,0 +1,22 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+# one:
+#   column: value
+#
+# two:
+#   column: value
+projeto1:
+       id: 1
+       titulo: "Primeiro Projeto"
+       semestre_id: 1
+       orientador_id: 1
+       aluno_id: 1123
+       anteprojeto: "bla.pdf"
+
+projeto2:
+       id: 2
+       titulo: "Segundo Projeto"
+       semestre_id: 1
+       orientador_id: 1
+       aluno_id: 112132
+

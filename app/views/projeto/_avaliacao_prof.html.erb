@@ -1,0 +1,25 @@
+Avaliação feita por <b><%= avaliacao_prof.professor.nome%></b> :<br>
+<table>
+  <% [[:clareza, 'Clareza: '], [:objetividade, 'Objetividade: '],[:correcao, 'Correção e organização do texto: '], [:detalhamento, 'Nível de detalhamento do conteúdo: '],[:dominio, 'Domínio do assunto: '],[:resultados, 'Resuldados apresentados: '],[:organizacao, 'Organização da apresentação: '],[:material_apoio, 'Preparação do material de apoio: '],[:transmissao_assunto, 'Transmissão do assunto: ']].each do |campo| %>
+    <tr>
+      <td>
+        <%= label :avaliacao, campo[0], campo[1]%>
+      </td>
+      <td>
+        <%= avaliacao_prof[campo[0]].to_s %>
+      </td>
+    </tr>
+  <%end%>
+  <tr>
+   <td>
+     <b> Nota: </b>
+   </td>
+   <td>
+     <%= "%.1f" % Avaliacao.calcula_nota(avaliacao_prof).to_s %>
+   </td>
+ </tr>
+</table>
+ <%if avaliacao_prof.versao_corrigida %>
+   <%= "Esta nota está condicionada à entrega de uma versão corrigida ao professor" %>
+ <%end%>
+<br><br>

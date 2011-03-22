@@ -1,0 +1,25 @@
+<h2><%= @projeto.titulo %></h2>
+
+<b>Aluno:</b> <%= @projeto.aluno.nome %> <br>
+<b>Orientador:</b> <%= @projeto.orientador.nome %> <br>
+
+<br><b>Resumo:</b> <br>
+<%= text_area :projeto, :resumo, :disabled => 'disabled' %> <br><br>
+<br>
+<b> Áreas de Interesse: </b> <br>
+<%= @projeto.topicos.map {|t| '- ' + t.nome + '<br>' } %> <br> 
+
+<b> Anteprojeto: </b> 
+<% if @projeto.anteprojeto %>
+ <%= link_to @projeto.anteprojeto, :action => 'anteprojeto', :id => @projeto.titulo %>
+<%else%>
+ não submetido.
+<%end%>
+<br>
+
+<b> Projeto final: </b>
+<% if @projeto.projeto_final %>
+  <%= link_to @projeto.projeto_final, :action => 'projeto_final', :id => @projeto.titulo %>
+<%else%>
+ não submetido.
+<%end%>

@@ -1,0 +1,126 @@
+<font size=5><b>Universidade Federal da Bahia<br>
+Departamento de Ciência da Computação<br>
+Bacharelado em Ciência da Computação<br>
+MAT057 – Projeto Final<br></b></font>
+<br>
+
+<div align="center"><font size=5><b>Formulário de Avaliação<br></b></font></div>
+
+<table>
+<tr><td><b>Aluno(a): </b></td> <td><%= @projeto.aluno.nome %></td></tr>
+<tr><td><b>Título do<br> Trabalho: </b></td><td> <%= @projeto.titulo %></td></tr>
+<tr><td><b>Orientador: </b> </td><td><%= @projeto.orientador.nome %></td></tr>
+</table>
+<br><br>
+<table border=1 cellpadding="0" cellspacing="0" >
+<tr>
+  <td align="center" width=600><b>Banca Examinadora</b></td>
+</tr>
+<tr>
+  <td>
+  <table>
+    <tr>
+      <td>&nbsp</td>
+      <td><b>Nome</b></td>
+    </tr>
+    <tr>
+      <td><b>Avaliador 1 &nbsp</b> </td>
+      <td> <%= @projeto.avaliacaos[0].professor.nome %> </td>
+    </tr>
+    <tr>
+      <td><b>Avaliador 2 &nbsp</b> </td>
+      <td> <%= @projeto.avaliacaos[1].professor.nome %> </td>
+    </tr>
+    <tr>
+      <td><b>Avaliador 3 &nbsp</b> </td>
+      <td> <%= @projeto.avaliacaos[2].professor.nome %> </td>
+    </tr>
+  </table>
+  </td>
+</tr>
+</table>
+<br><br>
+
+<table border=1 cellpadding="0" cellspacing="0" >
+  <tr>
+    <td align="center" width=600><b>Avaliação</b></td>
+  </tr>
+  <tr>
+    <td>
+      <table>
+        <tr>
+          <td><b>Avaliador</b></td>
+          <td><b>Nota</b></td>
+          <td><b>Assinatura</b></td> 
+        </tr>
+        <tr>
+          <td><b>Avaliador 1 &nbsp </b></td>
+          <td><%= "%.1f" % @projeto.avaliacaos[0].primeira_nota.to_s %></td>
+          <td>__________________________________________________</td>
+        </tr>
+        <tr>
+          <td><b>Avaliador 2 &nbsp </b></td>
+          <td><%= "%.1f" % @projeto.avaliacaos[1].primeira_nota.to_s %></td>
+          <td>__________________________________________________</td>
+        </tr>
+        <tr>
+          <td><b>Avaliador 3 &nbsp </b></td>
+          <td><%= "%.1f" % @projeto.avaliacaos[2].primeira_nota.to_s %></td>
+          <td>__________________________________________________</td>
+        </tr>
+        <tr>
+          <td align="right"><b>Média &nbsp</b></td>
+          <td><%= @media1 %></td>
+          <td></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<b>Observações:</b><br>
+__________________________________________________________________________<br>
+__________________________________________________________________________<br>
+__________________________________________________________________________<br>
+<br><br>
+
+<table border=1 cellpadding="0" cellspacing="0" >
+  <tr>
+    <td align="center" width=600><b>Segunda Avaliação</b></td>
+  </tr>
+  <tr>
+    <td>
+      <table>
+        <tr>
+          <td><b>Avaliador</b></td>
+          <td><b>Nota</b></td>
+          <td><b>Assinatura</b></td> 
+        </tr>
+        <tr>
+          <td><b>Avaliador 1 &nbsp </b></td>
+          <td><%= "%.1f" % @nota1.to_s %></td>
+          <td>__________________________________________________</td>
+        </tr>
+        <tr>
+          <td><b>Avaliador 2 &nbsp </b></td>
+          <td><%= "%.1f" % @nota2.to_s %></td>
+          <td>__________________________________________________</td>
+        </tr>
+        <tr>
+          <td><b>Avaliador 3 &nbsp </b></td>
+          <td><%= "%.1f" % @nota3.to_s %></td>
+          <td>__________________________________________________</td>
+        </tr>
+        <tr>
+          <td align="right"><b>Média &nbsp</b></td>
+          <td><%= @media2 %></td>
+          <td></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<b>Observações:</b><br>
+__________________________________________________________________________<br>
+__________________________________________________________________________<br>
+__________________________________________________________________________<br>
+

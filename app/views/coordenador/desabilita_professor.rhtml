@@ -1,0 +1,15 @@
+<h2> Desabilitação do Professor </h2>
+
+<p style="color: red; font-style: italic"> Um professor é desabilitado quando não mais está disponível para orientar ou avaliar projetos finais. <br>
+É possível reabilitá-lo editando suas características e marcando as opções de avaliador e/ou orientador. 
+</p>
+
+<% form_for :professor, @professor do |f| %>
+  <% [[:nome, 'Nome: ' + @professor.nome], [:email, 'Email: ' + @professor.email]].each do |campo| %>
+    <%= label :professor, campo[0], campo[1] %> <br>
+  <% end %>
+  <br>
+   <%= submit_tag 'Confirmar' %> ou <%= link_to 'Cancelar', :action => :index %>
+   <br>
+<% end %>
+

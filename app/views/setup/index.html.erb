@@ -1,0 +1,50 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>SSPF</title>
+    <%= stylesheet_link_tag "theme/my_stylesheet" %>
+  </head>
+  <body>
+    <h1> Sistema de Submissões de Projetos Finais</h1>
+
+<h2> Cadastre um usuário professor inicial: </h2>
+
+<%= error_messages_for :professor %>
+
+<% form_for :professor, @professor, :action => 'index', :controller => 'setup' do |f| %>
+   <table>
+     <% [[:nome, 'Nome: '], [:email, 'Email: ']].each do |campo| %>
+       <tr><td><b><%= label :professor, campo[0], campo[1] %></b></td>
+	  <td><%= f.text_field campo[0] %></td></tr>
+     <% end %>
+   </table>
+  <br>
+  <table>
+    <tr><td><b><%= label :professor, :usuario, 'Usuário: '%></b></td>
+    <td><%= f.text_field :usuario, :size => 20%> </td></tr>
+
+    <tr><td><b><%= label :professor, :senha, 'Senha: '%></b></td>
+    <td><%= f.password_field :senha, :size => 20 %></td></tr>
+
+    <tr><td><b><%= label :professor, :senha_confirmation, 'Repita a senha: '%></b></td>
+    <td><%= f.password_field :senha_confirmation, :size => 20 %> </td></tr>
+  </table>
+  <br>
+
+  <h2> Cadastre um semestre inicial: </h2>
+
+ <%= error_messages_for :semestre %>
+
+  <b><%= label :semestre, :nome, 'Nome do semestre: ' %></b>
+  <%= text_field :semestre, :nome, :size => 20%> <br>
+  <b><%= label :semestre, :prazo_registro, 'Prazo final para registro de  projetos: ' %></b>
+  <%= date_select :semestre, :prazo_registro %> <br>
+  <b><%= label :semestre, :prazo_final, 'Prazo final para entrega de projetos: ' %></b>
+  <%= date_select :semestre, :prazo_final %> <br><br>
+  <br>
+
+   <%= submit_tag 'Salvar' %>
+<% end %>
+  </body>
+</html>

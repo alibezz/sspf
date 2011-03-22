@@ -1,0 +1,7 @@
+<h2> Finalização de Semestre </h2>
+
+<% form_tag :action => 'finaliza_semestre' do %>
+  <tr><td><b><%= label :semestre, :coordenador, "Coordenador: " %></b></td>
+  <td><%= select_tag :coordenador, options_for_select(@professores.map{|s| [s.nome,s.id]}) %></td>
+  <td><%= submit_tag 'Finalizar', :onclick => "return confirm('Cuidado! Finalizar o semestre atual inicia um novo semestre e não é uma operação reversível.')" %> ou <%= link_to 'Voltar', :action => 'index', :controller => 'professor' %></td></tr><br>
+<% end %>  

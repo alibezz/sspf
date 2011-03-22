@@ -1,0 +1,30 @@
+<h2><%= @projeto.titulo %></h2>
+
+<% if flash[:notice] %>
+  <p style="color: red; font-style: italic"><%= flash[:notice] %></p>
+<% end %>
+
+<p style="color: green; font-style: italic">O prazo para edição de projetos é <%= Semestre.data(Semestre.corrente.prazo_final) %></p> 
+
+<%= error_messages_for :projeto %>
+
+<b>Orientador:</b> <%= @projeto.orientador.nome %> <br>
+<br>
+
+<% form_for :projeto, @projeto, :html => {:multipart => true} do |f| %>
+   <b><%= label :projeto, :topicos, "Tópicos relacionados: " %></b> <br>
+   <%= collection_select 'projeto', 'topico_ids', @topicos, 'id', 'nome',{},{:multiple => true, :size => 5}%> <br><br>
+   <b><%= label :projeto, :resumo, "Resumo: " %></b> <br>
+   <%= f.text_area :resumo %> <br><br>
+
+   <b><%= label :projeto, :arquivo_projeto_final, "Projeto Final: " %> </b>
+   <% if @projeto.projeto_final.nil? %>
+     <%= file_field_tag :arquivo_projeto_final %> 
+<b> ATENÇÃO:</b> O projeto final deve estar no formato PDF.<br><br>
+   <% else %>
+     <%= file_field_tag :arquivo_projeto_final, :onclick => "return alert('Já existe um projeto final salvo. Se você Salvar as alterações, o arquivo existente será sobrescrevido.')" %> 
+<b> ATENÇÃO:</b> O anteprojeto deve estar no formato PDF.<br><br>
+   <% end %>  
+
+     <%= submit_tag 'Salvar' %> ou <%= link_to 'Cancelar', :action => 'index' %>
+<% end %>

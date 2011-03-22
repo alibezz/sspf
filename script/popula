@@ -1,0 +1,28 @@
+#!/usr/bin/env ruby
+require File.dirname(__FILE__) + '/../config/environment'
+
+Professor.destroy_all
+Semestre.destroy_all
+Aluno.destroy_all
+Topico.destroy_all
+Projeto.destroy_all
+
+coordenador = Professor.create!(:nome => 'Debora Abdalla', :email => 'abdalla@dcc.ufba.br', :usuario => 'debora', :senha => '1234')
+Semestre.create!(:nome => '2008.1', :eh_corrente => true, :coordenador_id => coordenador.id, :prazo_final => Date.today + 5.days, :prazo_registro=> Date.today + 3.days)
+
+t1 = Topico.create!(:nome => "Engenharia de Software")
+t2 = Topico.create!(:nome => "Sistemas Operacionas")
+t3 = Topico.create!(:nome => "Sistemas Distribuidos")
+t4 = Topico.create!(:nome => "Banco de Dados")
+
+flach = Professor.create!(:nome => "Christina Von Flach", :email => "flach@dcc.ufba.br", :topico_ids => [t1.id], :usuario => 'flach', :senha => '1234', :orientador => true, :avaliador => true)
+fabiola = Professor.create!(:nome => "Fabiola Greve", :email => "fabiola@dcc.ufba.br", :topico_ids => [t1.id, t3.id], :usuario => 'fabiola', :senha => '1234', :orientador => true, :avaliador => true)
+luciano = Professor.create!(:nome => "Luciano Porto Barreto", :email => "luciano@dcc.ufba.br", :topico_ids => [t2.id, t3.id], :usuario => 'luciano', :senha => '1234', :orientador => true, :avaliador => true)
+george = Professor.create!(:nome => "George Lima", :email => "george@dcc.ufba.br", :topico_ids => [t4.id, t3.id], :usuario => 'george', :senha => '1234', :orientador => true, :avaliador => true)
+
+
+cason = Aluno.create!(:usuario => 'cason', :senha => '1234', :nome => 'Daniel Cason', :email => 'cason@dcc.ufba.br', :matricula => 200510123)
+aline = Aluno.create!(:usuario => 'aline', :senha => '1234', :nome => 'Aline Duarte Bessa', :email => 'aline061@dcc.ufba.br', :matricula => 200510124)
+danton = Aluno.create!(:usuario => 'danton', :senha => '1234', :nome => 'Danton Pimentel', :email => 'danton@dcc.ufba.br', :matricula => 200510125)
+moises = Aluno.create!(:usuario => 'moises', :senha => '1234', :nome => 'Moises Machado', :email => 'mmachado@dcc.ufba.br', :matricula => 200510126)
+

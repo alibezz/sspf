@@ -1,0 +1,9 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+semestre_atual:
+  id: 1
+  nome: 2008.1
+  eh_corrente: true
+  prazo_registro: <%= Date.today + 2.days%>
+  prazo_final: <%= Date.today + 5.days%>
+  coordenador_id: 1

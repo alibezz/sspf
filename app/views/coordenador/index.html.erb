@@ -1,0 +1,5 @@
+<p style="color: red; font-style: italic">
+<%= 'O sistema precisa ter ao menos um professor cadastrado. <br>' unless not @professores.empty? %>
+<%= 'O sistema precisa ser inicializado com a definição do semestre corrente. <br>' unless @professores.empty? or not @semestres.empty? %>
+<%= 'Sem tópicos cadastrados, novos projetos não podem ser inseridos.<br>' unless not @topicos.empty?%>
+</p>

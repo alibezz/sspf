@@ -1,0 +1,16 @@
+<h2> Semestre  <%= @semestre.nome %> </h2>
+
+<% form_tag :action => 'semestres' do %>
+  <b><%= label :semestre, :prazo_registro, 'Prazo final para registro de  projetos: ' %></b>
+  <%= date_select :semestre, :prazo_registro, :default => @semestre.prazo_registro %> <br>
+  <b><%= label :semestre, :prazo_final, 'Prazo final para entrega de projetos: ' %></b>
+  <%= date_select :semestre, :prazo_final, :default => @semestre.prazo_final %> <br><br>
+  <b><%= label :semestre, :coordenador_id, 'Coordenador do semestre: ' %></b>
+  <%= select_tag :coordenador_id, options_for_select(@professores.map{|s| [s.nome,s.id]},@semestre.coordenador_id) %><br>
+  <br>
+  <%= submit_tag 'Atualizar',:onclick => "return confirm('As alterações realizadas podem ser irreversíveis, principalmente se outro professor for selecionado como coordenador. Deseja continuar?')" %> 
+<% end %>
+<br>
+<% form_tag :action => 'finaliza_semestre', :coordenador => @semestre.coordenador_id do %>
+<%= submit_tag 'Finalizar o Semestre', :onclick => "return confirm('Se o semestre for finalizado, os projetos do semestre corrente não poderão mais ser editados nem avaliados. Além disso, esta operação não é reversível. Deseja continuar?')" %>
+<% end %>

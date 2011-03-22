@@ -1,0 +1,15 @@
+<h2>Áreas de Interesse</h2>
+
+<%= error_messages_for :topico %>
+
+<% form_for :topico, @topico, :action => :cadastra_topico, :controller => :coordenador, :url => {:retorno => @retorno} do |f| %>
+   <%= label :topico, :nome, 'Nome: ' %>
+   <%= f.text_field :nome %>
+   <%= submit_tag 'Adicionar' %>
+<% end %>
+
+<br> <br>
+<h3> Áreas de Interesse Cadastradas </h3>
+ <ul>
+   <%= @topicos.map {|t| '<li>' + t.nome + '<br></li>' } %>
+</ul>

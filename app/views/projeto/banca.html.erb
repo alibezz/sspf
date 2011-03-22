@@ -1,0 +1,5 @@
+<h2> Banca Avaliadora do Projeto </h2>
+  <%if !@professores.empty?%>
+    A banca avaliadora do seu projeto é composta por:<br>
+  <%end%>
+<%= @professores.map{|p| ' - ' +  p.nome + '<br>'}%>

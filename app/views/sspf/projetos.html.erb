@@ -1,0 +1,12 @@
+<h2> Projetos Registrados</h2>
+  <p>Caso queira buscar um projeto, busque pelo seu <b>título</b>.</p>
+<% form_tag(:action => :projetos) do %>
+  <%= text_field_tag(:titulo) %>
+  <%= select_tag :semestre, options_for_select(@semestres.map {|s| [s.nome,s.nome]}, @semestre.nome) %>
+  <%= submit_tag("Buscar") %>
+<% end %>
+
+<ul>
+ <%= render :partial => 'projeto', :collection => @projetos %>
+</ul>
+

@@ -1,0 +1,37 @@
+<h2>Avaliação do Projeto</h2>
+
+<%= error_messages_for :avaliacao %>
+
+Os conceitos devem ser <b>inteiros</b> entre 0 e 100. A nota final será calculada entre <b> 0 e 10.</b> <br>
+
+<% form_for :avaliacao, @avaliacao do |f| %>
+  <table>
+  <% [[:clareza, 'Clareza: '], [:objetividade, 'Objetividade: '],[:correcao, 'Correção e organização do texto: '], [:detalhamento, 'Nível de detalhamento do conteúdo: '],[:dominio, 'Domínio do assunto: '],[:resultados, 'Resultados apresentados: '],[:organizacao, 'Organização da apresentação: '],[:material_apoio, 'Preparação do material de apoio: '],[:transmissao_assunto, 'Transmissão do assunto: ']].each do |campo| %>
+    <tr>
+      <td>
+        <b><%= label :avaliacao, campo[0], campo[1] %></b>
+      </td>
+      <td>
+        <%= f.text_field campo[0], :size => 3 %>
+      </td>
+    </tr>
+  <%end%>
+  </table>
+
+  <br>
+  <%= f.check_box :versao_corrigida %>
+  Esta nota está associada à entrega de uma versão corrigida.
+  <br><br>
+
+  <h4>Nota calculada:
+  <% if @nota %>
+    <%= @nota.to_s %>
+  <%else%>
+    <%= "indeterminada" %>
+  <%end%>
+  <br>
+  </h4>
+ 
+  <%= submit_tag 'Atualizar Nota' %> ou <%= link_to 'Voltar', :controller => 'professor', :action => 'index' %>
+
+<%end%>

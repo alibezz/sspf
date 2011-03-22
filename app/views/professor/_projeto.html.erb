@@ -1,0 +1,9 @@
+<li>
+<b>Título: </b><%= link_to projeto.titulo, :controller => 'projeto', :action => 'visualiza', :id => projeto.titulo %> 
+
+<% if projeto.avaliacaos and projeto.banca and projeto.banca.professors %>
+	<% if projeto.avaliacaos.length == projeto.banca.professors.length %>
+		<%=link_to 'Gerar folha de avaliação', :controller => 'professor', :action => 'gera_folha', :id => projeto.titulo %><br><br>
+	<% end %>
+<% end %>
+</li>

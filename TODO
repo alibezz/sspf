@@ -1,0 +1,20 @@
+- Aluno pode ter mais de um projeto, desde que eles estejam registrados em semestres distintos
+
+Views:
+ - colocar algo no index de sspf
+ - lista de alunos do coordenador devem ter o estado do seu projeto
+
+Testes:
+
+Controller:
+ - seria interessante que coisas usadas sempre (@topicos, @professores, @orientadores etc.) fossem buscados em application.
+
+Finalizacao de Semestre:
+  - banca deve ter semestre_id, visto que nao pode continuar apos um finaliza_semestre (professor pode avaliar)
+  - aluno nao pode ver, editar, nada do projeto...
+  - coordenador nao ve projetos nem pode editar banca
+  - ninguem ve o projeto...
+
+Avaliacoes
+   - P q o aluno estah vendo avaliações parciais? Digo, se dois avaliadores avaliaram, ele vê a nota dos dois mesmo faltando o 3o...
+   - A coordenadora pode editar uma banca mesmo que os professores já tenham começado a avaliar!

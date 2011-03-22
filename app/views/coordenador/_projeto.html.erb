@@ -1,0 +1,11 @@
+<li>
+<b> <%= projeto.titulo %> <br>
+
+<% if projeto.banca.nil? %>
+ <%= link_to 'Criar Banca', :action => :edita_banca, :controller => 'projeto', :id => projeto.titulo %>
+<% else %> 
+ <%= link_to 'Editar Banca', :action => :edita_banca, :controller => 'projeto', :id => projeto.titulo %>
+<% end %> 
+ <br> <br>
+
+  </li>

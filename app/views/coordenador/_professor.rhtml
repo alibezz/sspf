@@ -1,0 +1,20 @@
+<li> 
+<b>  Nome: </b>  <%= professor.nome %> <br> 
+<b> Email: </b> <%= professor.email %> <br>
+
+<% unless professor.topicos.empty? %>
+<b> Áreas de Interesse: </b> <br>
+<%= professor.topicos.map {|t| t.nome + '<br>' } %> <br> 
+<% end %>
+
+<% if professor.orientador %>
+  <b> Orientador </b> <br>
+<%end%>
+<% if professor.avaliador %>
+  <b> Avaliador</b> <br>
+<%end%>
+<% if not (professor.avaliador or professor.orientador) %>
+  <b> Desabilitado </b> <br>
+<%end%> <br>
+<br>
+</li> 

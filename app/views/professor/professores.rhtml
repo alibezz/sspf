@@ -1,0 +1,17 @@
+<h2> Professores Registrados</h2>
+<p style="color: green; font-style: italic"><%= flash[:notice] %></p>
+
+<% form_tag(:action => :professores) do %>
+  <%= text_field_tag(:nome) %>
+  <%= submit_tag("Buscar") %>
+<% end %>
+<% if params[:nome] %>
+  <%= link_to 'Mostra Todos', :action => :professores %> <br>
+<%end%>
+
+<ul>
+ <%= render :partial => 'professor_buscado', :collection => @professores %>
+</ul>
+
+<%= link_to 'Voltar', :action => :coordenacao, :controller => :sspf %> <br>
+

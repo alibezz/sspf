@@ -1,0 +1,23 @@
+<h2>Registro de Projeto</h2>
+
+<%= error_messages_for :projeto %>
+
+<% form_for :projeto, @projeto, :html => {:multipart => true} do |f| %>
+   <table>
+     <tr><td><b><%= label :projeto, :titulo, 'Titulo do Projeto: ' %></b></td>
+     <td><%= f.text_field :titulo %> </td></tr>
+
+     <tr><td><b><%= label :projeto, :orientador, "Orientador: " %></b></td>
+     <td><%= select_tag :orientador, options_for_select(@orientadores.select {|s| s.orientador }.map{|s| [s.nome,s.id]}) %></td></tr>
+   </table>
+   <b><%= label :projeto, :topicos, "Tópicos relacionados: " %></b> <br>
+   <%= collection_select 'projeto', 'topico_ids', @topicos, 'id', 'nome',{},{:multiple => true, :size => 5}%> <br><br>
+
+   <b><%= label :projeto, :resumo, "Resumo: " %></b> <br>
+   <%= f.text_area :resumo %> <br><br>
+
+   <b><%= label :projeto, :arquivo_anteprojeto, "Anteprojeto: " %> </b>
+   <%= file_field_tag :arquivo_anteprojeto %> <b>  ATENÇÃO:</b> O anteprojeto deve estar no formato PDF.<br><br>
+
+   <%= submit_tag 'Registrar' %> ou <%= link_to 'Cancelar', :action => 'index', :controller => 'projeto' %>
+<% end %>

@@ -1,0 +1,6 @@
+<h2> Busca de Professor </h2>
+<b>A busca de professores é útil para edição de seus dados e para sua desabilitação.</b><br><br>
+<% form_tag(:action => :lista_professores) do %>
+  <%= text_field_tag(:nome) %>
+    <%= submit_tag("Buscar") %>
+<% end %>

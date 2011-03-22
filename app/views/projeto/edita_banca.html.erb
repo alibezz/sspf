@@ -1,0 +1,10 @@
+<h2>Banca de <%=@projeto.titulo %></h2>
+
+<%= error_messages_for :banca %>
+ 
+ O orientador de <%= @projeto.titulo %> é <b><%= @projeto.orientador.nome %></b>. <br><br>
+<% form_for :banca, @banca, :html => {:multipart => true} do |f| %>
+<b><%= label :banca, :sugeridos, "Sugestão de banca: " %></b> <br><br>
+   <%= collection_select 'banca', 'professor_ids', @sugeridos, 'id', 'nome',{},{:multiple => true, :size => 4}%> <br><br>
+   <%= submit_tag 'Salvar' %>
+<% end %>	

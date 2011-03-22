@@ -1,0 +1,12 @@
+<p><b> Prazo final de entrega do Semestre <%= @semestre.nome %></b></p>
+
+<%= error_messages_for :semestre %>
+
+<% form_tag :action => 'prazo_final' do %>
+   <%= label :semestre, :prazo_registro, 'Prazo final para registro de  projetos: ' %>
+   <%= date_select :semestre, :prazo_registro %> <br>
+   <%= label :semestre, :prazo_final, 'Prazo final para entrega de projetos: ' %>
+   <%= date_select :semestre, :prazo_final  %> <br><br>
+  <%= submit_tag 'Atualizar' %> ou <%= link_to 'Voltar', :action => 'index', :controller => 'coordenador' %>
+<% end %>
+

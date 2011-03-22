@@ -1,0 +1,14 @@
+<h2> Professores </h2>
+
+Entre com o <b>nome</b> para filtrar a busca:
+<% form_tag(:action => :professores) do %>
+  <%= text_field_tag(:nome) %>
+  <%= submit_tag("Buscar") %>
+<% end %>
+<%= link_to 'Mostra Todos', :action => :professores %> <br>
+
+<ul>
+ <%= render :partial => 'professor_buscado', :collection => @professores %>
+</ul>
+
+

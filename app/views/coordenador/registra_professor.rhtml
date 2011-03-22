@@ -1,0 +1,40 @@
+<h2>Credenciamento de Professor</h2>
+
+<%= error_messages_for :professor %>
+
+<% form_for :professor, @professor do |f| %>
+   <table>
+     <% [[:nome, 'Nome: '], [:email, 'Email: ']].each do |campo| %>
+       <tr><td><b><%= label :professor, campo[0], campo[1] %></b></td>
+	  <td><%= f.text_field campo[0] %></td></tr>
+     <% end %>
+   </table>
+   <br>
+
+  <table>
+    <tr><td><b><%= label :professor, :usuario, 'Usuário: '%></b></td>
+    <td><%= f.text_field :usuario, :size => 20%> </td></tr>
+
+    <tr><td><b><%= label :professor, :senha, 'Senha: '%></b></td>
+    <td><%= f.password_field :senha, :size => 20 %></td></tr>
+
+    <tr><td><b><%= label :professor, :senha_confirmation, 'Repita a senha: '%></b></td>
+    <td><%= f.password_field :senha_confirmation, :size => 20 %> </td></tr>
+  </table>
+  <br>
+  <% if @topicos.empty? %>
+    <p style="color: green; font-style: italic">Não há tópicos de interesse cadastrados. Cadastre-os 
+	    <%=link_to 'aqui', :action => :topicos, :controller => :coordenador %>.</p> 
+  <%else%>
+    <b>Áreas de Interesse</b><br>
+    <%= select_tag 'topics[]', options_for_select(@topicos.map{ |s| [s.nome,s.id]}), { :multiple => true, :size => 5} %> 
+    <p style="color: green; font-style: italic">Para cadastrar novos tópicos de interesse, clique <%=link_to 'aqui', :action => :topicos, :controller => :coordenador %>. </p>
+  <% end %>
+   <br>
+   <table>
+   <tr><td><b> Disponível para avaliar: </b></td> <td><%= f.check_box :avaliador %></td></tr>
+   <tr><td><b> Disponível para orientar: </b></td> <td><%= f.check_box :orientador %> <br></td></tr>
+   </table>
+   <br>
+   <%= submit_tag 'Registrar' %> ou <%= link_to 'Cancelar', :action => :index, :controller => :professor %> 
+<% end %>

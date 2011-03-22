@@ -1,0 +1,69 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+# one:
+#   column: value
+#
+# two:
+#   column: value
+aluno1:
+    id: 10
+    usuario: aluno01
+    senha_encriptada: efc520f884afb4f76403ef26fe225721e468c9c2 #1234
+    salto: 81b3abd162b655296caa2ebbedad674b7185fdef
+    nome: Primeiro Aluno
+    email: aluno01@dcc.ufba.br
+    matricula: 200510165
+    type: Aluno
+
+aluno2:
+    id: 11
+    usuario: aluno02
+    senha_encriptada: efc520f884afb4f76403ef26fe225721e468c9c2 #1234
+    salto: 81b3abd162b655296caa2ebbedad674b7185fdef
+    nome: Aluno02
+    email: aluno02@dcc.ufba.br
+    matricula: 200510165
+    type: Aluno
+
+aluno3:
+    id: 12
+    usuario: aluno03
+    senha_encriptada: efc520f884afb4f76403ef26fe225721e468c9c2
+    salto: 81b3abd162b655296caa2ebbedad674b7185fdef
+    nome: Aluno03
+    email: aluno03@dcc.ufba.br
+    matricula: 200510165
+    type: Aluno
+
+coordenador:
+    id: 1
+    usuario: coordenador
+    senha_encriptada: efc520f884afb4f76403ef26fe225721e468c9c2 #1234
+    salto: 81b3abd162b655296caa2ebbedad674b7185fdef
+    nome: Coordenador do SSPF
+    email: coordenador@dcc.ufba.br
+    type: Professor
+    orientador: false
+    avaliador: false
+
+professor1:
+    id: 2
+    usuario: professor01
+    senha_encriptada: efc520f884afb4f76403ef26fe225721e468c9c2 #1234
+    salto: 81b3abd162b655296caa2ebbedad674b7185fdef
+    nome: Primeiro Professor
+    email: professor01@dcc.ufba.br
+    type: Professor
+    orientador: true
+    avaliador: true
+
+professor2:
+    id: 3
+    usuario: professor02
+    senha_encriptada: efc520f884afb4f76403ef26fe225721e468c9c2 #1234
+    salto: 81b3abd162b655296caa2ebbedad674b7185fdef
+    nome: Segundo Professor
+    email: professor02@dcc.ufba.br
+    type: Professor
+    orientador: true
+    avaliador: true

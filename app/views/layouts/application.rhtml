@@ -1,0 +1,86 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>SSPF</title>
+    <%= stylesheet_link_tag "theme/my_stylesheet" %>
+  </head>
+  <body>
+    <h1> Sistema de Submissões de Projetos Finais</h1>
+    <h3><%= link_to 'Projetos',:controller => 'sspf', :action => :projetos %> <%= link_to 'Professores',:controller => 'sspf', :action => :professores %> <%= link_to 'Home',:controller => 'sspf', :action => :index %></h3>
+    <table>
+      <tr>
+        <td valign="top">
+          <table>
+            <tr><td height=75>
+              <%if @usuario %>
+                <hr>
+                Bem-Vindo <%= @usuario.usuario %><br>
+                <%= link_to 'Deslogar', :controller => 'sspf', :action => 'logout' %><br>
+                <%= link_to 'Alterar Senha', :controller => 'sspf', :action => 'muda_senha', :id => @usuario.usuario %><br>
+                <hr>
+              <%else%>
+                <% form_for :usuario, @usuario, :url => {:action => 'login', :controller => 'sspf'} do |f| %>
+                  <table>
+                    <br><br>
+                    <tr><td><b><%= label :usuario, :usuario, 'Usuário: '%></b></td>
+                    <td><%= f.text_field :usuario, :size => 20%> <br></td></tr>
+                  
+                    <tr><td><b><%= label :usuario, :senha, 'Senha: '%></b></td>
+                    <td><%= f.password_field :senha, :size => 20 %> <br></td></tr>
+                  </table>
+                  <%= submit_tag 'Conectar' %>
+                <%end%>
+              <%end%>
+            </td></tr>
+            <tr><td>
+              <%if @usuario%>
+                <%if @usuario.class == Aluno%>
+                  <%@projeto = Projeto.find_by_aluno_id(@usuario.id)%>
+                  <%if @projeto.nil?%>
+                    <%=link_to 'Registrar Projeto', :action => :registra, :controller => :projeto%><br>
+	               <%else%>
+		              <%=link_to 'Página Inicial', :controller => 'projeto', :action => 'index'%><br>
+                    <%=link_to 'Dados do Projeto', :controller => 'projeto', :action => 'visualiza', :id => @projeto.titulo%><br>
+                    <%=link_to 'Editar Projeto', :controller => 'projeto', :action => 'edita', :id => @projeto.titulo%><br>
+                    <%=link_to 'Exibir Banca', :controller => 'projeto', :action => 'banca', :id => @projeto.titulo%><br>
+		              <%=link_to 'Exibir Resultado', :controller => 'projeto', :action => 'ver_avaliacao', :id => @projeto.titulo%><br>
+	               <%end%>
+                <%elsif @usuario.class == Professor%>
+                  <%=link_to 'Minhas Informações', :controller => 'professor', :action => 'index'%><br>
+		            <%=link_to 'Editar Informações', :controller => 'professor', :action => 'edita', :id => @usuario.id%><br>
+		            <%if @usuario.orientador or @usuario.avaliador%>
+		              <%=link_to 'Bancas', :controller => 'professor', :action => 'bancas'%><br>
+		            <%end%>
+		            <%if @usuario.orientador %>
+		              <%=link_to 'Projetos Orientados', :controller => 'professor', :action => 'projetos_orientados'%><br>
+                  <%end%>
+		            <hr>
+                  <%@semestre = Semestre.find_by_eh_corrente(true)%>
+	               <%if @semestre and @semestre.coordenador_id == @usuario.id%>
+                    <%=link_to 'Professores', :action => :professores, :controller => :coordenador%><br>
+                    <%=link_to 'Alunos', :action => :alunos, :controller => :coordenador%><br>
+                    <%=link_to 'Semestres', :action => :semestres, :controller => :coordenador%><br>
+                    <%=link_to 'Tópicos', :action => :topicos, :controller => :coordenador%><br>
+                    <%=link_to 'Gerenciar Bancas', :action => :bancas, :controller => :coordenador%><br>
+                    <hr>
+                  <%end%>
+		          <%end%>
+              <%end%>
+            </td></tr>
+          </table>
+        </td>
+        <td valign = "top">
+          <% if flash[:warning] %>
+            <p style="color: red; font-style: italic"><%= flash[:warning] %></p>
+          <%end%>
+
+          <% if flash[:notice] %>
+            <p style="color: green; font-style: italic"><%= flash[:notice] %></p>
+          <%end%>
+          <%= yield %>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>

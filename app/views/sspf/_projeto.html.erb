@@ -1,0 +1,9 @@
+<li>
+Título: <%= link_to projeto.titulo, :controller => 'projeto', :action => 'visualiza', :id => projeto.titulo %> <br>
+Orientador: <%= projeto.orientador.nome %> <br>
+Aluno: <%= projeto.aluno.nome %> <br>
+Semestre: <%= projeto.semestre.nome %> <br>
+Situação: <%= projeto.situacao %><br>
+Áreas de interesse: <br> <%= projeto.topicos.map {|t| '- ' + t.nome + '<br>' } %>
+<br>
+</li>

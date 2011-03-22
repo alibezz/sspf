@@ -1,0 +1,17 @@
+<h2> Professores Registrados</h2>
+
+<%= link_to 'Cadastrar Professor', :action => 'registra_professor' %>
+<br><br>
+
+<% form_tag(:action => :professores) do %>
+  <%= label 'professor', 'Nome: '%>
+  <%= text_field_tag(:nome) %>
+  <%= submit_tag("Buscar") %>
+<% end %>
+<%= link_to 'Mostra Todos', :action => :professores %> <br>
+
+<ul>
+ <%= render :partial => 'professor_buscado', :collection => @professores %>
+</ul>
+
+
